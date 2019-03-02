@@ -1,15 +1,7 @@
 .App {
-  height: 96vh;
+  background-color: #cbd5e7;
+  height: 100vh;
   margin: 0 auto;
   position: relative;
   width: 50%;
-}
-
-.App h1 {
-  text-align: center;
-}
-
-.App footer {
-  bottom: 0;
-  position: absolute;
 }

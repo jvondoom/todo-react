@@ -5,7 +5,7 @@ import './TodoItem.css';
 const todoItem = props => {
   const completeStyle = {
     fontStyle: 'italic',
-    color: '#cecece',
+    color: '#666',
     textDecoration: 'line-through',
   };
 
