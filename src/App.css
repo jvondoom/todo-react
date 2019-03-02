@@ -2,6 +2,7 @@
   background-color: #cbd5e7;
   height: 100vh;
   margin: 0 auto;
+  max-width: 500px;
   position: relative;
-  width: 50%;
+  width: 100%;
 }
