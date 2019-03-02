@@ -1,25 +1,56 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
+import todosData from './data/todosData';
+
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
+import TodoItem from './TodoItem/TodoItem';
+
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      todosData: todosData,
+    };
+    this.handleOnChange = this.handleOnChange.bind(this);
+  }
+
+  handleOnChange(id) {
+    const newTodos = this.state.todosData.map(item => {
+      if (item.id === id) {
+        item.completed = !item.completed;
+      }
+      return item;
+    });
+
+    this.setState({
+      todosData: newTodos,
+    });
+  }
+
   render() {
+    const todoItems = this.state.todosData.map(todo => {
+      return (
+        <TodoItem key={todo.id} item={todo} onChange={this.handleOnChange} />
+      );
+    });
+
+    const pendingTodos = this.state.todosData.filter(item => {
+      return !item.completed;
+    });
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header />
+        <p>
+          There {pendingTodos.length > 1 ? 'are' : 'is'} {pendingTodos.length}{' '}
+          pending item
+          {pendingTodos.length > 1 && 's'}
+        </p>
+        {todoItems}
+        <Footer />
       </div>
     );
   }

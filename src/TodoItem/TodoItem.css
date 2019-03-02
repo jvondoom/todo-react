@@ -1,0 +1,6 @@
+.TodoItem {
+  border: 1px solid #333;
+  display: flex;
+  margin: 0 30px 15px;
+  padding: 0 10px;
+}
